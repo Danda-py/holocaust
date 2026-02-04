@@ -42,18 +42,12 @@ export function HeroSection() {
             Never Forget
           </div>
         </div>
-  <Link
-  href="https://padlet.com/emanuelenava1/hmd-wall-yyydz6tfkf580aap/wish/3774916403"
-  className="text-sm text-muted-foreground tracking-widest uppercase"
->
-  Our Wall
-</Link>
         <a
-  href="https://padlet.com/emanuelenava1/hmd-wall-yyydz6tfkf580aap/wish/3774916403"
-  className="text-sm text-muted-foreground tracking-widest uppercase"
->
- Our Wall
-</a>
+          href="https://padlet.com/emanuelenava1/hmd-wall-yyydz6tfkf580aap/wish/3774916403"
+          className="text-sm text-muted-foreground tracking-widest uppercase"
+        >
+         Our Wall
+        </a>
 
         <div className="mt-12">
           <span className="inline-block w-24 h-px bg-muted-foreground/50" />
