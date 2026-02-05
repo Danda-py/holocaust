@@ -173,7 +173,8 @@ function AudioPlayer() {
 
   return (
     <div
-      className="bg-white rounded-md shadow-md p-4 w-300 h-72 flex flex-col justify-between"
+      className="rounded-md shadow-md p-4 w-270 h-72 flex flex-col justify-between"
+      backgroundColor: "var(--cork)"
       role="region"
       aria-label="Audio player"
     >
@@ -187,7 +188,7 @@ function AudioPlayer() {
         <div className="flex items-center justify-center gap-3">
           <button
             onClick={togglePlay}
-            className="px-3 py-2 bg-green text-white rounded text-sm transition-all duration-300 hover:scale-105 hover:z-10 cursor-pointer"
+            className="px-3 py-2 bg-emerald-50 text-white rounded text-sm transition-all duration-300 hover:scale-105 hover:z-10 cursor-pointer"
             aria-label={isPlaying ? "Pause" : "Play"}
           >
             {isPlaying ? "Pause" : "Play"}
@@ -203,7 +204,7 @@ function AudioPlayer() {
 
         <div>
           <div
-            className="w-full h-3 rounded bg-gray-200 transition-all duration-300 hover:scale-105 hover:z-10 cursor-pointer"
+            className="w-full h-3 rounded bg-gray-200 transition-all duration-300"
             onClick={handleProgressClick}
             role="progressbar"
             aria-valuemin={0}
