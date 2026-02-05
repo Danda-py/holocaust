@@ -173,7 +173,7 @@ function AudioPlayer() {
 
   return (
     <div
-      className="bg-white rounded-md shadow-md p-4 w-72 h-72 flex flex-col justify-between"
+      className="bg-white rounded-md shadow-md p-4 w-300 h-72 flex flex-col justify-between"
       role="region"
       aria-label="Audio player"
     >
