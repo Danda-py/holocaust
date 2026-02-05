@@ -17,10 +17,10 @@ export function CharactersWall({ characters, isAdmin = false }: CharactersWallPr
     return (
       <section className="py-16 px-6 md:px-12 lg:px-24">
         <div className="max-w-6xl mx-auto text-center">
-          <h2 className="font-serif text-3xl md:text-4xl mb-8 text-foreground">
+          <h2 className="font-serif text-3xl md:text-4xl mb-8 text-black">
             Remembering the Individuals
           </h2>
-          <p className="text-muted-foreground">
+          <p className="text-muted-black">
             No characters have been added yet.
           </p>
         </div>
@@ -31,10 +31,10 @@ export function CharactersWall({ characters, isAdmin = false }: CharactersWallPr
   return (
     <section className="py-16 px-6 md:px-12 lg:px-24">
       <div className="max-w-7xl mx-auto">
-        <h2 className="font-serif text-3xl md:text-4xl mb-4 text-center text-foreground">
+        <h2 className="font-serif text-3xl md:text-4xl mb-4 text-center text-black">
           Remembering the Individuals
         </h2>
-        <p className="text-center text-muted-foreground mb-12 max-w-2xl mx-auto">
+        <p className="text-center text-muted-black mb-12 max-w-2xl mx-auto">
           Each person represented here had a unique story, dreams, and loved ones.
           Click on a card to learn more about their life.
         </p>
@@ -180,8 +180,8 @@ function AudioPlayer() {
 >
       <audio ref={audioRef} src="/podcast.mp3" preload="metadata" />
       <div className="text-center">
-        <h3 className="font-semibold text-sm text-foreground">Podcast</h3>
-        <p className="text-xs text-muted-foreground">Listen to the episode</p>
+        <h3 className="font-semibold text-sm text-black">Podcast</h3>
+        <p className="text-xs text-muted-black">Listen to the episode</p>
       </div>
 
       <div className="flex flex-col gap-3">
@@ -213,18 +213,18 @@ function AudioPlayer() {
             aria-label="Audio progress"
           >
             <div
-              className="h-3 rounded bg-foreground"
+              className="h-3 rounded bg-black"
               style={{ width: `${progressPercent}%` }}
             />
           </div>
-          <div className="flex justify-between text-xs text-muted-foreground mt-1">
+          <div className="flex justify-between text-xs text-muted-black mt-1">
             <span>{formatTime(currentTime)}</span>
             <span>{formatTime(duration)}</span>
           </div>
         </div>
 
         <div className="flex items-center justify-between gap-3">
-          <label className="text-xs text-muted-foreground">Volume</label>
+          <label className="text-xs text-muted-black">Volume</label>
           <input
             type="range"
             min={0}
