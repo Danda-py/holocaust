@@ -172,12 +172,12 @@ function AudioPlayer() {
   const progressPercent = duration ? (currentTime / duration) * 100 : 0;
 
   return (
-    <div
-      className="rounded-md shadow-md p-4 w-270 h-72 flex flex-col justify-between"
-      backgroundColor: "var(--cork)"
-      role="region"
-      aria-label="Audio player"
-    >
+<div
+  className="rounded-md shadow-md p-4 w-270 h-72 flex flex-col justify-between"
+  style={{ backgroundColor: "var(--cork)" }}
+  role="region"
+  aria-label="Audio player"
+>
       <audio ref={audioRef} src="/podcast.mp3" preload="metadata" />
       <div className="text-center">
         <h3 className="font-semibold text-sm text-foreground">Podcast</h3>
