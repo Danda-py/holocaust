@@ -173,7 +173,7 @@ function AudioPlayer() {
 
   return (
 <div
-  className="rounded-md shadow-md p-4 w-270 h-72 flex flex-col justify-between"
+  className="rounded-md shadow-md p-4 w-290 h-72 flex flex-col justify-between"
   style={{ backgroundColor: "var(--post-it-cream)" }}
   role="region"
   aria-label="Audio player"
@@ -204,7 +204,7 @@ function AudioPlayer() {
 
         <div>
           <div
-            className="w-full h-3 rounded bg-gray-200 transition-all duration-300"
+            className="w-full h-3 rounded bg-blue-300 transition-all duration-300"
             onClick={handleProgressClick}
             role="progressbar"
             aria-valuemin={0}
