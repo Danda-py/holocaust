@@ -30,6 +30,15 @@ export function Footer() {
           This memorial is dedicated to preserving the memory of Holocaust victims.
         </p>
       </div>
+              <div className="flex items-center justify-center gap-6 text-sm text-muted-foreground">
+          <Link
+            href="https://instagram.com"
+            className="flex items-center gap-2 hover:text-foreground transition-colors"
+          >
+            <Lock className="w-4 h-4" />
+            <span>OUR INSTAGRAM</span>
+          </Link>
+        </div>
     </footer>
   );
 }
