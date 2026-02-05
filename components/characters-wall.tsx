@@ -187,14 +187,14 @@ function AudioPlayer() {
         <div className="flex items-center justify-center gap-3">
           <button
             onClick={togglePlay}
-            className="px-3 py-2 bg-foreground text-white rounded text-sm"
+            className="px-3 py-2 bg-green text-white rounded text-sm transition-all duration-300 hover:scale-105 hover:z-10 cursor-pointer"
             aria-label={isPlaying ? "Pause" : "Play"}
           >
             {isPlaying ? "Pause" : "Play"}
           </button>
           <button
             onClick={stop}
-            className="px-3 py-2 bg-red-500 text-white rounded text-sm"
+            className="px-3 py-2 bg-red-500 text-white rounded text-sm transition-all duration-300 hover:scale-105 hover:z-10 cursor-pointer"
             aria-label="Stop"
           >
             Stop
@@ -203,7 +203,7 @@ function AudioPlayer() {
 
         <div>
           <div
-            className="w-full h-3 rounded bg-gray-200 cursor-pointer"
+            className="w-full h-3 rounded bg-gray-200 transition-all duration-300 hover:scale-105 hover:z-10 cursor-pointer"
             onClick={handleProgressClick}
             role="progressbar"
             aria-valuemin={0}
