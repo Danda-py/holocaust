@@ -17,10 +17,10 @@ export function CharactersWall({ characters, isAdmin = false }: CharactersWallPr
     return (
       <section className="py-16 px-6 md:px-12 lg:px-24">
         <div className="max-w-6xl mx-auto text-center">
-          <h2 className="font-serif text-3xl md:text-4xl mb-8 text-black">
+          <h2 className="font-serif text-3xl md:text-4xl mb-8 text-foreground">
             Remembering the Individuals
           </h2>
-          <p className="text-black">
+          <p className="foreground">
             No characters have been added yet.
           </p>
         </div>
@@ -31,10 +31,10 @@ export function CharactersWall({ characters, isAdmin = false }: CharactersWallPr
   return (
     <section className="py-16 px-6 md:px-12 lg:px-24">
       <div className="max-w-7xl mx-auto">
-        <h2 className="font-serif text-3xl md:text-4xl mb-4 text-center text-black">
+        <h2 className="font-serif text-3xl md:text-4xl mb-4 text-center text-foreground">
           Remembering the Individuals
         </h2>
-        <p className="text-center text-black mb-12 max-w-2xl mx-auto">
+        <p className="text-center text-foreground mb-12 max-w-2xl mx-auto">
           Each person represented here had a unique story, dreams, and loved ones.
           Click on a card to learn more about their life.
         </p>
