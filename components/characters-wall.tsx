@@ -174,7 +174,7 @@ function AudioPlayer() {
   return (
 <div
   className="rounded-md shadow-md p-4 w-270 h-72 flex flex-col justify-between"
-  style={{ backgroundColor: "var(--cork)" }}
+  style={{ backgroundColor: "var(--post-it-cream)" }}
   role="region"
   aria-label="Audio player"
 >
@@ -188,14 +188,14 @@ function AudioPlayer() {
         <div className="flex items-center justify-center gap-3">
           <button
             onClick={togglePlay}
-            className="px-3 py-2 bg-emerald-50 text-white rounded text-sm transition-all duration-300 hover:scale-105 hover:z-10 cursor-pointer"
+            className="px-3 py-2 bg-green-700 text-white rounded text-sm transition-all duration-300 hover:scale-105 hover:z-10 cursor-pointer"
             aria-label={isPlaying ? "Pause" : "Play"}
           >
             {isPlaying ? "Pause" : "Play"}
           </button>
           <button
             onClick={stop}
-            className="px-3 py-2 bg-red-500 text-white rounded text-sm transition-all duration-300 hover:scale-105 hover:z-10 cursor-pointer"
+            className="px-3 py-2 bg-red-700 text-white rounded text-sm transition-all duration-300 hover:scale-105 hover:z-10 cursor-pointer"
             aria-label="Stop"
           >
             Stop
