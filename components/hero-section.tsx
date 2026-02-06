@@ -20,7 +20,7 @@ export function HeroSection() {
         </div>
 
         <h1 className="font-serif text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-foreground text-balance">
-          Holocaust Memorial
+          HMD (Holocaust Memorial Day)
         </h1>
 
         <p className="text-lg md:text-xl text-muted-foreground mb-8 max-w-2xl mx-auto leading-relaxed">
@@ -41,13 +41,17 @@ export function HeroSection() {
           <div className="text-sm text-muted-foreground tracking-widest uppercase">
             Never Forget
           </div>
-        </div>
-        <a
+          <span className="hidden sm:inline text-muted-foreground/50">|</span>
+          <div className="text-sm text-muted-foreground tracking-widest uppercase">
+               <a
           href="https://padlet.com/emanuelenava1/hmd-wall-yyydz6tfkf580aap/wish/3774916403"
           className="text-sm text-muted-foreground tracking-widest uppercase"
         >
          Our Wall
         </a>
+          </div>
+        </div>
+
 
         <div className="mt-12">
           <span className="inline-block w-24 h-px bg-muted-foreground/50" />
