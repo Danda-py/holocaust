@@ -1,0 +1,59 @@
+.images-gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 1rem;
+  padding: 1rem;
+}
+
+.image-item {
+  position: relative;
+  cursor: default;
+  border: 2px solid transparent;
+  border-radius: 8px;
+  overflow: hidden;
+  transition: all 0.2s ease;
+}
+
+.image-item.draggable {
+  cursor: grab;
+}
+
+.image-item.draggable:hover {
+  transform: scale(1.05);
+  border-color: #3b82f6;
+}
+
+.image-item.dragging {
+  opacity: 0.5;
+  border-color: #ef4444;
+  transform: scale(0.95);
+}
+
+.image-item.drag-over {
+  background-color: #dbeafe;
+  border-color: #3b82f6;
+  transform: scale(1.05);
+}
+
+.drag-handle {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  background-color: rgba(0, 0, 0, 0.6);
+  color: white;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 14px;
+  font-weight: bold;
+  cursor: grab;
+}
+
+.drag-handle:active {
+  cursor: grabbing;
+}
+
+.image-item img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
