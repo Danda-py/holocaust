@@ -1,0 +1,139 @@
+'use client';
+
+import { useState } from 'react';
+import { useSession } from 'next-auth/react';
+import Image from 'next/image';
+
+interface CharacterImage {
+  id: string;
+  url: string;
+  order: number;
+}
+
+interface CharacterCardProps {
+  characterId: string;
+  images: CharacterImage[];
+  onImagesReordered?: (images: CharacterImage[]) => void;
+}
+
+export function CharacterCard({ 
+  characterId, 
+  images, 
+  onImagesReordered 
+}: CharacterCardProps) {
+  const { data: session } = useSession();
+  const [localImages, setLocalImages] = useState<CharacterImage[]>(images);
+  const [draggedItem, setDraggedItem] = useState<number | null>(null);
+  const [isLoading, setIsLoading] = useState(false);
+
+  // Verificare se l'utente è admin
+  const isAdmin = session?.user?.role === 'admin';
+
+  const handleDragStart = (index: number) => {
+    if (!isAdmin) return;
+    setDraggedItem(index);
+  };
+
+  const handleDragOver = (e: React.DragEvent<HTMLDiv>) => {
+    if (!isAdmin) return;
+    e.preventDefault();
+    e.currentTarget.classList.add('drag-over');
+  };
+
+  const handleDragLeave = (e: React.DragEvent<HTMLDiv>) => {
+    e.currentTarget.classList.remove('drag-over');
+  };
+
+  const handleDrop = async (e: React.DragEvent<HTMLDiv>, dropIndex: number) => {
+    e.preventDefault();
+    e.currentTarget.classList.remove('drag-over');
+
+    if (!isAdmin || draggedItem === null || draggedItem === dropIndex) return;
+
+    // Creare nuovo array con le immagini riordinate
+    const newImages = [...localImages];
+    const [draggedImage] = newImages.splice(draggedItem, 1);
+    newImages.splice(dropIndex, 0, draggedImage);
+
+    // Aggiornare gli ordini
+    const reorderedImages = newImages.map((img, idx) => ({
+      ...img,
+      order: idx,
+    }));
+
+    setLocalImages(reorderedImages);
+    setDraggedItem(null);
+
+    // Inviare al server
+    try {
+      setIsLoading(true);
+      const response = await fetch('/api/characters/reorder-images', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          characterId,
+          images: reorderedImages,
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to reorder images');
+      }
+
+      if (onImagesReordered) {
+        onImagesReordered(reorderedImages);
+      }
+    } catch (error) {
+      console.error('Error reordering images:', error);
+      // Ripristinare lo stato precedente in caso di errore
+      setLocalImages(images);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  return (
+    <div className="character-card">
+      <div className="images-gallery">
+        {localImages.map((image, index) => (
+          <div
+            key={image.id}
+            draggable={isAdmin}
+            onDragStart={() => handleDragStart(index)}
+            onDragOver={handleDragOver}
+            onDragLeave={handleDragLeave}
+            onDrop={(e) => handleDrop(e, index)}
+            className={`image-item ${
+              isAdmin ? 'draggable' : ''
+            } ${draggedItem === index ? 'dragging' : ''}`}
+          >
+            <Image
+              src={image.url}
+              alt={`Character image ${index + 1}`}
+              width={300}
+              height={300}
+              priority={index === 0}
+            />
+            {isAdmin && (
+              <div className="drag-handle">
+                <span>⋮⋮</span>
+              </div>
+            )}
+          </div>
+        ))}
+      </div>
+
+      {!isAdmin && (
+        <p className="text-sm text-gray-500 mt-4">
+          Solo gli amministratori possono riordinare le immagini.
+        </p>
+      )}
+
+      {isLoading && (
+        <p className="text-sm text-blue-500 mt-2">Salvataggio in corso...</p>
+      )}
+    </div>
+  );
+}
