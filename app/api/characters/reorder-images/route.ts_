@@ -1,0 +1,65 @@
+import { getServerSession } from 'next-auth/next';
+import { authOptions } from '@/lib/auth';
+import { db } from '@/lib/db';
+import { NextRequest, NextResponse } from 'next/server';
+
+interface ReorderRequest {
+  characterId: string;
+  images: Array<{
+    id: string;
+    url: string;
+    order: number;
+  }>;
+}
+
+export async function POST(request: NextRequest) {
+  try {
+    // Verificare l'autenticazione
+    const session = await getServerSession(authOptions);
+
+    if (!session) {
+      return NextResponse.json(
+        { error: 'Non autenticato' },
+        { status: 401 }
+      );
+    }
+
+    // Verificare i permessi di admin
+    if (session.user?.role !== 'admin') {
+      return NextResponse.json(
+        { error: 'Solo gli amministratori possono riordinare le immagini' },
+        { status: 403 }
+      );
+    }
+
+    const body: ReorderRequest = await request.json();
+    const { characterId, images } = body;
+
+    // Validare i dati
+    if (!characterId || !images || !Array.isArray(images)) {
+      return NextResponse.json(
+        { error: 'Dati non validi' },
+        { status: 400 }
+      );
+    }
+
+    // Aggiornare l'ordine delle immagini nel database
+    for (const image of images) {
+      await db.characterImage.update({
+        where: { id: image.id },
+        data: { order: image.order },
+      });
+    }
+
+    return NextResponse.json(
+      { success: true, message: 'Immagini riordinate con successo' },
+      { status: 200 }
+    );
+  } catch (error) {
+    console.error('Errore nel riordinamento delle immagini:', error);
+    return NextResponse.json(
+      { error: 'Errore nel salvataggio' },
+      { status: 500 }
+    );
+  }
+}
