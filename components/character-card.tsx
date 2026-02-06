@@ -21,7 +21,7 @@ export function CharacterCard({ character, isAdmin = false }: CharacterCardProps
   const [isOpen, setIsOpen] = useState(false);
 
   // offset dell'immagine (in px)
-  const [offset, setOffset] = useState({ x: 0, y: 0 });
+  const [offset, setOffset] = useState({ x: 0, y: 500 });
 
   // riferimenti per il drag
   const draggingRef = useRef(false);
