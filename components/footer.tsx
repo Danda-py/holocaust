@@ -31,7 +31,7 @@ export function Footer() {
         </p>
 
         <p className="mt-4 text-xs text-muted-foreground/60">
-          By Andaloro Davide, Nava Emanuele and Pincio Mattia for Holocaust Memorial Day
+          By Andaloro Davide, Nava Emanuele, Lorenzoni Chen and Pincio Mattia for Holocaust Memorial Day
           <br />
           ISAROME SCHOOL
         </p>
