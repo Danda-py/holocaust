@@ -8,7 +8,7 @@ const _playfair = Playfair_Display({ subsets: ["latin"], variable: "--font-serif
 const _sourceSans = Source_Sans_3({ subsets: ["latin"], variable: "--font-sans" });
 
 export const metadata: Metadata = {
-  title: 'Holocaust Memorial',
+  title: 'HMD',
   description: 'A digital memorial honoring the victims of the Holocaust. Remember. Learn. Never Forget.',
   generator: 'v0.app',
   icons: {
