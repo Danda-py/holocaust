@@ -29,17 +29,24 @@ export function Footer() {
         <p className="mt-8 text-xs text-muted-foreground/60">
           This memorial is dedicated to preserving the memory of Holocaust victims.
         </p>
-        <br />
-        <p className="mt-8 text-xs text-muted-foreground/60">
-  By Andaloro Davide, Nava Emanuele and Pincio Mattia for Holocaust Memorial Day
-  <br />
-  ISAROME SCHOOL
-</p>
-<br />
-        <div className="mt-8 text-xs text-muted-foreground/60">
+
+        <p className="mt-4 text-xs text-muted-foreground/60">
+          By Andaloro Davide, Nava Emanuele and Pincio Mattia for Holocaust Memorial Day
+          <br />
+          ISAROME SCHOOL
+        </p>
+
+        <div className="mt-6 flex items-center justify-center gap-2 text-xs text-muted-foreground/60">
           <Lock className="w-4 h-4" />
-   <a href="https://github.com/Danda-py/holocaust/">SOURCE CODE</a>
-        </div>>
+          <a
+            href="https://github.com/Danda-py/holocaust/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hover:text-foreground transition-colors"
+          >
+            SOURCE CODE
+          </a>
+        </div>
       </div>
     </footer>
   );
