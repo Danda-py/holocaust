@@ -25,7 +25,7 @@ export function Footer() {
             <span>Admin</span>
           </Link>
         </div>
-
+      </div>
         <p className="mt-8 text-xs text-muted-foreground/60">
           This memorial is dedicated to preserving the memory of Holocaust victims.
         </p>
