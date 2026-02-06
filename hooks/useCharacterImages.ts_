@@ -1,0 +1,68 @@
+import { useState, useCallback } from 'react';
+import { useSession } from 'next-auth/react';
+
+interface CharacterImage {
+  id: string;
+  url: string;
+  order: number;
+}
+
+export function useCharacterImages(
+  initialImages: CharacterImage[],
+  characterId: string
+) {
+  const { data: session } = useSession();
+  const [images, setImages] = useState<CharacterImage[]>(initialImages);
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+
+  const isAdmin = session?.user?.role === 'admin';
+
+  const reorderImages = useCallback(
+    async (reorderedImages: CharacterImage[]) => {
+      if (!isAdmin) {
+        setError('Solo gli amministratori possono riordinare le immagini');
+        return false;
+      }
+
+      try {
+        setIsLoading(true);
+        setError(null);
+
+        const response = await fetch('/api/characters/reorder-images', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            characterId,
+            images: reorderedImages,
+          }),
+        });
+
+        if (!response.ok) {
+          const data = await response.json();
+          throw new Error(data.error || 'Errore nel salvataggio');
+        }
+
+        setImages(reorderedImages);
+        return true;
+      } catch (err) {
+        const message = err instanceof Error ? err.message : 'Errore sconosciuto';
+        setError(message);
+        return false;
+      } finally {
+        setIsLoading(false);
+      }
+    },
+    [characterId, isAdmin]
+  );
+
+  return {
+    images,
+    isLoading,
+    error,
+    isAdmin,
+    reorderImages,
+  };
+}
